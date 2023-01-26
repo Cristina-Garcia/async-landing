@@ -2,6 +2,7 @@ const API =
   "https://youtube-v31.p.rapidapi.com/search?channelId=UCjNevOFP-Kil0D9QAjNL-Jw&part=snippet%2Cid&order=date&maxResults=10";
 
 const content = null || document.getElementById("content");
+// console.log(content);
 
 const options = {
   method: "GET",
@@ -20,6 +21,7 @@ async function fetchData(urlApi) {
 (async () => {
   try {
     const videos = await fetchData(API);
+    // console.log(videos);
     let view = `
         ${videos.items
           .map(
@@ -40,20 +42,12 @@ async function fetchData(urlApi) {
       </div>
         `
           )
-          .slice(0, 4)
+          .slice(0, 5)
           .join("")}
         `;
     content.innerHTML = view;
+    console.log(view);
   } catch (error) {
     console.log(error);
   }
 })();
-
-/*fetch(
-  options
-)
-  .then((response) => response.json())
-  .then((response) => console.log(response))
-  .catch((err) => console.error(err));
-
-    // "https://youtube-v31.p.rapidapi.com/search?channelId=UCjNevOFP-Kil0D9QAjNL-Jw&part=snippet%2Cid&order=date&maxResults=10 */
